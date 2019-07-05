@@ -26,16 +26,16 @@
         }
 
         .white {
-            fill: white;
-            stroke: black;
+            fill: rgb(46, 46, 46);
+            stroke: rgb(36, 36, 36);
             stroke-width: 1;
             cursor: pointer;
             margin: 2px;
         }
 
         .pressed {
-            fill: #9e9e9e;
-            stroke: lightblue;
+            fill: #2c2c2c;
+            stroke: rgb(45, 218, 88);
             cursor: pointer;
             stroke-width: 1;
             outline: black solid 1px;
@@ -50,7 +50,14 @@
 
         .black:hover {
             fill: #515151;
-            stroke: lightblue;
+            stroke: rgb(5, 146, 12);
+            stroke-width: 1;
+            outline: black solid 1px;
+        }
+
+        .white:hover {
+            fill: #515151;
+            stroke: rgb(27, 171, 255);
             stroke-width: 1;
             outline: black solid 1px;
         }
@@ -165,6 +172,21 @@
 </body>
 
 <script>
+    window.addEventListener('keypress', function keyPressInfo(e){
+        const tone = document.querySelector('audio[data-key="${e.keycode}"]')
+        if (!tone) return
+        const pianoKey = document.querySelector('.pianoKey[data-key="${e.keycode}"]')
+        tone.currentTime = 0
+        pianoKey.classList.add('pressed')
+        tone.play()
+        setTimeout(time function() {
+            pianoKey.classList.remove('pressed')
+        }, 300)
+    })
+
+
+
+
 </script>
 
 </html>
